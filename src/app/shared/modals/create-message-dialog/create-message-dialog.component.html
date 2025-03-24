@@ -1,0 +1,33 @@
+<div class="flex flex-col relative min-w-[300px] pt-8 p-4">
+  <div class="absolute right-2 top-4">
+    <button (click)="onCancelClick()" mat-icon-button>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <h1 class="mb-[16px]">Create Message</h1>
+
+  <form (submit)="submitForm()" [formGroup]="form" class="example-form flex flex-col gap-2">
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput placeholder="email">
+      @if (form.controls.email.hasError('required')) {
+        <mat-error> Email is Required</mat-error>
+      }
+      @if (form.controls.email.hasError('pattern')) {
+        <mat-error> Wrong format for Email</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Leave a comment</mat-label>
+      <textarea formControlName="message" matInput placeholder="Some message..."></textarea>
+      @if (form.controls.message.hasError('required')) {
+        <mat-error> Comment is Required</mat-error>
+      }
+    </mat-form-field>
+
+    <button class="mt-4" type="submit" mat-flat-button>Create Message</button>
+  </form>
+
+</div>
